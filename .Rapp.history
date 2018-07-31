@@ -1,6 +1,3 @@
-qplot(Wind, Ozone, data=airquality, facets =.~factor(Month))
-airquality=transform(airquality, Month=factor(Month))
-qplot(Wind, Ozone, data=airquality, facets =.~Month)
 ?transform
 library(ggplot2movies)
 install.packges("ggplot2movies")
@@ -244,7 +241,14 @@ old.packages()
 install.packages("ggplot2")
 old.packages()
 setwd("RResearch")
+getwd()
 dir()
 setwd("RepData_PeerAssessment1")
 dir()
-unzip("activity.zip")
+df1 <- read.csv("activity.csv")#
+df1$date <- as.Date(df1$date, "%Y-%m-%d")
+tSteps <- with(df1, tapply(steps, date, sum, na.rm=TRUE))
+meanSteps <- mean(tSteps, na.rm=TRUE)#
+medSteps <- median(tSteps, na.rm=TRUE)#
+print(paste("The mean total number of steps per day is", meanSteps))#
+print(paste("The median total number of steps per day is", medSteps))

@@ -22,7 +22,7 @@ df1$date <- as.Date(df1$date, "%Y-%m-%d")
 
 
 ```r
-tSteps <- with(df1, tapply(steps, date, sum))
+tSteps <- with(df1, tapply(steps, date, sum, na.rm=TRUE))
 hist(tSteps, 15, main="", xlab="Total Steps per Day", ylim=c(0,20))
 ```
 
@@ -35,7 +35,7 @@ print(paste("The mean total number of steps per day is", meanSteps))
 ```
 
 ```
-## [1] "The mean total number of steps per day is 10766.1886792453"
+## [1] "The mean total number of steps per day is 9354.22950819672"
 ```
 
 ```r
@@ -43,7 +43,7 @@ print(paste("The median total number of steps per day is", medSteps))
 ```
 
 ```
-## [1] "The median total number of steps per day is 10765"
+## [1] "The median total number of steps per day is 10395"
 ```
 <br><br>
 
@@ -115,10 +115,8 @@ print(paste("The median total number of steps per day is", median(newSteps)))
 ## [1] "The median total number of steps per day is 10762"
 ```
   
-The impact of imputing missing values on the mean and median estimates was minimal 
-(for e.g. the median was 10765 for the original data set and it was 10762 for the newer ones). 
-The only difference was observed in the histogram of total daily steps. The frequency of the 
-mean increased since all NAs were replaced by the mean.
+The impact of imputing missing values was that there was a modest increase in the mean and median compared to the original data. The median increased from 10395 to 10762 (3.5% increase). The mean increased from about 9354 to 10765 (15% increase). 
+
 <br><br>
 
 ## Are there differences in activity patterns between weekdays and weekends?  
