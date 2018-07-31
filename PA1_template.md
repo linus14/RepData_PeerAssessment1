@@ -26,7 +26,7 @@ tSteps <- with(df1, tapply(steps, date, sum))
 hist(tSteps, 15, main="", xlab="Total Steps per Day", ylim=c(0,20))
 ```
 
-![](PA1_template_files/figure-html/Total Steps-1.png)<!-- -->
+![](PA1_template_files/figure-html/TotalSteps-1.png)<!-- -->
 
 ```r
 meanSteps <- mean(tSteps, na.rm=TRUE)
@@ -57,7 +57,7 @@ df2 <- data.frame(intervals, avgD)
 with (df2, plot(intervals, avgD, type="l", xlab="Interval", ylab="Average Number of Steps"))
 ```
 
-![](PA1_template_files/figure-html/Time Series-1.png)<!-- -->
+![](PA1_template_files/figure-html/TimeSeries-1.png)<!-- -->
 
 ```r
 maxInt <- df2[which.max(df2$avgD),"intervals"]
@@ -97,7 +97,7 @@ newSteps <- with(dfNew, tapply(steps, date, sum))
 hist(newSteps, 15, main="", xlab="Total Steps per Day", ylim=c(0,25))
 ```
 
-![](PA1_template_files/figure-html/Missing Values-1.png)<!-- -->
+![](PA1_template_files/figure-html/MissingValues-1.png)<!-- -->
 
 ```r
 print(paste("The mean total number of steps per day is", mean(newSteps)))
@@ -155,4 +155,4 @@ plot(intervals, wkdayData, type="l", xlab="", ylab="Steps", main="Weekday", ylim
 plot(intervals, wkendData, type="l", xlab="Interval", ylab="Steps", main="Weekend", ylim=rng)
 ```
 
-![](PA1_template_files/figure-html/Time Series Panel-1.png)<!-- -->
+![](PA1_template_files/figure-html/TimeSeriesPanel-1.png)<!-- -->

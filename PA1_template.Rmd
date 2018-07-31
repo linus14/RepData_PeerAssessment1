@@ -19,7 +19,7 @@ df1$date <- as.Date(df1$date, "%Y-%m-%d")
 
 ## What is mean total number of steps taken per day?  
 
-```{r Total Steps, echo = TRUE}
+```{r TotalSteps, echo = TRUE}
 tSteps <- with(df1, tapply(steps, date, sum))
 hist(tSteps, 15, main="", xlab="Total Steps per Day", ylim=c(0,20))
 meanSteps <- mean(tSteps, na.rm=TRUE)
@@ -31,7 +31,7 @@ print(paste("The median total number of steps per day is", medSteps))
 
 ## What is the average daily activity pattern?  
 
-```{r Time Series, echo = TRUE}
+```{r TimeSeries, echo = TRUE}
 avgD <- with(df1, tapply(steps, interval, mean, na.rm=TRUE))
 intervals <- unique(df1$interval)
 df2 <- data.frame(intervals, avgD)
@@ -50,7 +50,7 @@ print(paste("The total number of missing values is", mValues))
 
 
 The mean of each 5-min interval was rounded and substituted in place of the missing values  
-```{r Missing Values, echo = TRUE}
+```{r MissingValues, echo = TRUE}
 library(data.table)
 dfNew <- copy(df1)
 mIndex <- which(is.na(df1$steps))
@@ -91,7 +91,7 @@ dfNew$day <- as.factor(dfNew$day)
 <br><br>
 *Create panel plot to compare weekday and weekend activities*  
 
-```{r Time Series Panel, echo=TRUE}
+```{r TimeSeriesPanel, echo=TRUE}
 sp <- split(dfNew, dfNew$day)
 wkdayData <- with(sp[["weekday"]], tapply(steps, interval, mean))
 wkendData <- with(sp[["weekend"]], tapply(steps, interval, mean))
